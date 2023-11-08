@@ -6,6 +6,7 @@ PBP C
 # Tugas 7 
 
 ## Apa perbedaan utama antara stateless dan stateful widget dalam konteks pengembangan aplikasi Flutter?
+
 Perbedaan utama antara Stateless Widget dan Stateful Widget dalam konteks pengembangan aplikasi Flutter adalah bagaimana cara mengelola dan merespons perubahan data serta tampilan aplikasi:
 
 Stateless Widget:
@@ -23,6 +24,7 @@ Stateful Widget:
 Contohnya :  jika ingin membuat tombol yang dapat mengubah teks ketika ditekan, kita dapat menggunakan Stateful Widget. Sedangkan jika hanya ingin menampilkan teks statis yang tidak berubah, kita dapat menggunakan Stateless Widget.
 
 ## Sebutkan seluruh widget yang kamu gunakan untuk menyelesaikan tugas ini dan jelaskan fungsinya masing-masing.
+
 Widget yang saya gunakan untuk menyelesaikan tugas ini terdiri atas beberapa widget yang akan dijelaskan sebagai berikut.
 
 - MyHomePage (StatelessWidget):
@@ -277,8 +279,8 @@ Kemudian, saya mengubah inisialisasi daftar items dengan memberikan warna latar 
 ```
 final List<ShopItem> items = [
   ShopItem("Lihat Produk", Icons.checklist, Colors.blue), // Warna biru
-  ShopItem("Tambah Produk", Icons.add_shopping_cart, Colors.red), // Warna hijau
-  ShopItem("Logout", Icons.logout, Colors.green), // Warna merah
+  ShopItem("Tambah Produk", Icons.add_shopping_cart, Colors.red), // Warna merah
+  ShopItem("Logout", Icons.logout, Colors.green), // Warna hijau
 ];
 ```
 
@@ -288,12 +290,12 @@ Setelah itu pada kelas ShopCard, saya menggunakan warna latar belakang yang tela
 class ShopCard extends StatelessWidget {
   final ShopItem item;
 
-  const ShopCard(this.item, {super.key}); // Constructor
+  const ShopCard(this.item, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: item.backgroundColor, // Gunakan warna latar belakang dari item
+      color: item.backgroundColor, // Menggunakan warna latar belakang dari item
       child: InkWell(
         // ... kode lainnya ...
       ),
