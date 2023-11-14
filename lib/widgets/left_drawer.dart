@@ -12,26 +12,26 @@ class LeftDrawer extends StatelessWidget {
         children: [
           const DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.indigo,
+              color: Colors.white,
             ),
             child: Column(
               children: [
                 Text(
-                  'Shopping List',
+                  'Inventorafia de Winkel',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Colors.indigo,
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(10)),
                 Text(
-                  "Catat seluruh keperluan belanjamu di sini!",
+                  "Yukk jangan lupa catat belanjamu !",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 15,
-                    color: Colors.white,
+                    color: Colors.indigo,
                     fontWeight: FontWeight.normal,
                   ),
                 ),
@@ -41,7 +41,7 @@ class LeftDrawer extends StatelessWidget {
 
           ListTile(
             leading: const Icon(Icons.home_outlined),
-            title: const Text('Halaman Utama'),
+            title: const Text('Home'),
             // Bagian redirection ke MyHomePage
             onTap: () {
               Navigator.pushReplacement(
@@ -57,8 +57,8 @@ class LeftDrawer extends StatelessWidget {
               // Bagian redirection ke ShopFormPage
               onTap: () {
                 /*
-            TODO: Buatlah routing ke ShopFormPage di sini,
-            setelah halaman ShopFormPage sudah dibuat.*/
+            // routing ke ShopFormPage di sini,
+            // setelah halaman ShopFormPage sudah dibuat.*/
                 Navigator.push(
                     context,
                     MaterialPageRoute(

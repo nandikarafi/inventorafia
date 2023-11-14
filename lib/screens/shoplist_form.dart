@@ -17,7 +17,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
         appBar: AppBar(
           title: const Center(
             child: Text(
-              'Form Tambah Item',
+              'Selamat berbelanja Murah',
             ),
           ),
           backgroundColor: Colors.indigo,
@@ -26,7 +26,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
         body: Form(
           key: _formKey,
           child: SingleChildScrollView(
-             child: Column(
+          child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
@@ -46,7 +46,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
             },
             validator: (String? value) {
               if (value == null || value.isEmpty) {
-                return "Nama tidak boleh kosong!";
+                return "Item tidak boleh kosong!";
               }
               return null;
             },
@@ -95,7 +95,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
         },
         validator: (String? value) {
           if (value == null || value.isEmpty) {
-            return "Deskripsi tidak boleh kosong!";
+            return "Deskripsi wajib diisi !";
           }
           return null;
         },
