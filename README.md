@@ -728,3 +728,99 @@ onTap: () {
 
 Saya menambahkan kode tersebut agar form dapat diakses melalui card. Sekian dari saya, terima kasih.
 
+# Tugas 9
+
+## Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+
+Iya, kita bisa melakukan pengambilan data JSON tanpa membuat model terlebih dahulu. Kita dapat menggunakan fungsi jsonDecode () dari pustaka dart:convert untuk mengubah string JSON menjadi objek Map<String, dynamic> yang bisa diakses dengan menggunakan kunci-kunci yang sesuai. Namun, hal ini tidak disarankan untuk proyek yang kompleks karena dapat kehilangan keuntungan dari validasi tipe data, kesalahan pengetikan, dan fitur-fitur lain yang disediakan oleh model. Membuat model kelas sebelum melakukan pengambilan data JSON akan membuat kode Anda lebih rapi, mudah dibaca, dan mudah diuji. Anda bisa membaca lebih lanjut tentang perbedaan antara menggunakan model kelas atau tidak di JSON and serialization.
+
+## Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+
+CookieRequest adalah sebuah kelas yang membantu untuk melakukan permintaan HTTP dengan menggunakan cookie. Cookie adalah sebuah mekanisme untuk menyimpan informasi di sisi client , seperti token autentikasi, preferensi pengguna, atau data lainnya . Cookie biasanya dikirim oleh server sebagai respons dari permintaan HTTP pertama, dan kemudian disimpan oleh client untuk digunakan kembali di permintaan berikutnya. Instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter karena cookie biasanya dibutuhkan untuk mengakses berbagai layanan atau fitur yang disediakan oleh server, seperti autentikasi, otorisasi, personalisasi, atau sinkronisasi data. Dengan menggunakan instance CookieRequest yang sama, dapat dipastikan bahwa cookie Anda tetap konsisten dan valid di seluruh aplikasi.
+
+## Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+
+- Pertama,kita dapat membuat sebuah permintaan HTTP ke server yang menyediakan data JSON yang Anda inginkan. Kita bisa menggunakan pustaka http atau dio untuk melakukan hal ini. Anda juga perlu memeriksa status kode respons HTTP untuk memastikan bahwa permintaan berhasil dan tidak ada kesalahan.
+- Kedua, kita harus mengurai data JSON yang diterima dari server menjadi objek Dart yang bisa Anda gunakan di aplikasi Anda. Kita dapat menggunakan fungsi jsonDecode () dari pustaka dart:convert untuk melakukan hal ini, atau kita bisa menggunakan pustaka json_serializable atau json_annotation untuk menghasilkan kode yang bisa mengurai data JSON secara otomatis berdasarkan model kelas yang telah dibuat.
+- Ketiga, kita perlu menampilkan data yang telah diurai tersebut pada Flutter dengan menggunakan widget-widget yang sesuai. Kita dapat menggunakan ListView, GridView, Card, ListTile, Text, Image, atau widget lain yang Anda butuhkan untuk menampilkan data dengan cara yang Anda inginkan. Kita juga perlu memperhatikan state management dan lifecycle widget, agar data tetap sinkron dengan server dan tidak hilang saat terjadi perubahan atau pergantian layar.
+
+## Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+
+- Pertama, kita terlebih dahulu membuat sebuah form di Flutter yang meminta pengguna untuk memasukkan username dan password. Kita dapat menggunakan TextField, TextFormField, ElevatedButton, atau widget lain yang Anda butuhkan untuk membuat form tersebut. Kita juga dapat melakukan validasi input pengguna, seperti memeriksa apakah input tidak kosong, memiliki panjang minimal, atau sesuai dengan format yang diharapkan.
+- Kedua, kita perlu mengirimkan input pengguna tersebut ke server Django yang menyediakan layanan autentikasi. Kita bisa menggunakan pustaka http atau dio untuk melakukan hal ini. Kita juga perlu mengatur header content-type dan accept untuk menunjukkan bahwa Anda mengirimkan dan menerima data dalam format JSON. Kita bisa menggunakan metode POST atau GET tergantung pada preferensi.
+- Ketiga, kita perlu menerima respons dari server Django yang berisi hasil dari proses autentikasi. Respons ini bisa berupa status kode HTTP, pesan kesalahan, atau token autentikasi. Kita perlu memeriksa status kode HTTP untuk memastikan bahwa permintaan Anda berhasil dan tidak ada kesalahan. Jika ada kesalahan, kita perlu menampilkan pesan kesalahan tersebut kepada pengguna dan meminta mereka untuk memasukkan input yang benar. Jika tidak ada kesalahan, kita perlu menyimpan token autentikasi yang diterima dari server ke penyimpanan lokal. Token autentikasi ini akan digunakan untuk mengakses layanan atau fitur lain yang membutuhkan autentikasi di server Django.
+- Keempat, kita perlu menampilkan menu atau halaman yang sesuai dengan status autentikasi pengguna di Flutter. Kita bisa menggunakan Navigator atau widget lain yang dibutuhkan untuk membuat navigasi dan tata letak aplikasi Anda. Kita juga perlu memeriksa token autentikasi yang tersimpan di penyimpanan lokal Anda setiap kali Anda ingin mengakses layanan atau fitur yang membutuhkan autentikasi di server Django. Jika token autentikasi tidak valid atau kadaluarsa, kita perlu meminta pengguna untuk login kembali atau melakukan refresh token.
+
+## Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+
+- fetchProduct (Async Function):mengambil data produk dari API atau sumber data lainnya.
+- AppBar: menampilkan app bar dengan judul.
+- LeftDrawer: Widget yang berisi drawer kiri. 
+- FutureBuilder: membangun antarmuka berdasarkan hasil dari suatu Future.
+- ListView.builder: membuat daftar produk dalam bentuk list
+- Scaffold: sebagai struktur dasar halaman, termasuk app bar, drawer, dan body.
+- Container: sebagai wadah untuk setiap item produk dalam
+- Text: untuk menampilkan teks seperti nama produk, harga, jumlah dan deskripsi.
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+
+Pertama, saya melakukan integrasi auntentikasi Django-Flutter. Saya membuat django app bernama authentication dan saya menambahkan corsheader ke INSTALLED_APPS dan saya juga menambahkan corsheader.middleware.CorsMiddlew pada settings.py. Saya juga menambahkan 
+
+```
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
+```
+
+pada settings.py. Setelah itu, saya membuat views.py dan urls.py yang dapat dilihat pada kode saya.
+
+Kedua, saya melakukan sistem autentikasi pada flutter. Saya menginstall
+
+```
+flutter pub add provider
+flutter pub add pbp_django_auth
+```
+
+Setelah itu, saya menambahkan CookieRequest pada main.dart yang dapat dilihat pada file saya tersebut. Kemudian, saya membuat file login.dart yang isinya dapat dilihat pada kode saya.
+
+Selanjutnya, saya melakukan pembuatan model kustom. Saya membuka endpoin JSON pada situs Quicktype. Kemudian saya translate jadi dart. Setelah itu, saya copy. Lalu saya membuat file baru yaitu product.dart yang ada pada lib/models. Copyan kode tersebut saya paste di file tersebut.
+
+Kemudian, saya menerapkan fetch data dari django untuk ditampilkan ke flutter. Pada direktori flutter, saya menjalankan perintah
+
+```
+flutter pub add http
+```
+
+Saya juga tak lupa menambahkan user-persimision pada bagian android/app/src/main/AndroidManifest.xml yang dapat dilihat pada kode saya.
+
+Lalu saya, melakukan fetch data dari django dengan membuat file baru pada screens yaitu lib/screens yaitu list_product_dart. Adapun isinya dapat dilihat pada kode saya.
+
+Setelah itu, saya mengintegrasi form flutter dengan layanan Django. Saya membuat fungsi baru pada main/views.py dan juga menambahkan path baru pada main/urls.py. Setelah itu, pada shoplist_form.dart. Saya menambahkan
+
+```
+...
+@override
+Widget build(BuildContext context)
+    final request = context.watch<CookieRequest>();  
+...
+```
+
+Kemudian, saya mengubah onPressed: () yang dapat dilihat perubahannya pada kode saya.
+
+Setelah itu, saya mengimplementasi fitur logout. Saya membuat views.py pada authentication. Lalu saya menambahkan path pada urls.py yang ada pada authentication. Kemudian, saya menambahkan
+
+```
+final request = context.watch<CookieRequest>();  
+```
+
+pada shop_card.dart. Setelah itu, saya melakukan sedikit perubahan pada bagian on Tap: () sehingga dapat dilakukan proses secara asinkronus yang dapat dilihat pada kode saya.
+
+Sekian dari saya, terima kasih.
+
+
+
+
+
